@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:untitled14/Components/Item_ListHomePage.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -16,26 +16,22 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: ListView.builder
-        (
-          padding: const EdgeInsets.all(8.0),
-          itemCount: titles.length,
-          itemBuilder: (BuildContext context , int index)
-          {
-            return Column(
-              children: <Widget>[
-                const Padding(
-                    padding: EdgeInsets.only(bottom: 140)
-                ),
-                Image.network(images[index]),
-                const Padding(
-                    padding: EdgeInsets.only(top: 35)
-                ),
-                Text(titles[index], style: const TextStyle(fontSize: 25),)
-              ],
-            );
-          }
+      appBar: AppBar(
+        title: const Center(
+            child: Text('Список устройств', style: TextStyle(fontSize: 25))
+        ),
       ),
+      body:
+        ListView.builder(
+            itemCount: titles.length,
+            itemBuilder: (BuildContext context, int index)
+            {
+              return ItemPhone(
+                ItemPhotoPhone: images[index],
+                ItemTitlePhone: titles[index]
+              );
+            }
+        ),
     );
   }
 }
